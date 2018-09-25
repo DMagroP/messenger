@@ -1,33 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+<b-container>
+    <b-row align-h="center">
+        <b-col cols="8">
 
-                <div class="panel-body">
+            <b-card-group deck>
+                <b-card title="Inicio de sesión">
                     <b-alert show>
                         Por favor, ingresa tus datos.
                     </b-alert>
 
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <b-form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        <b-form-group id="exampleInputGroup1"
+                                        label="Correo Electrónico"
+                                        label-for="email"
+                                        description="Nunca compartiremos tu correo. Está seguro con nosotros.">
+                            <b-form-input id="email"
+                                        type="email"
+                                        name="email"
+                                        value="{{ old('email') }}"
+                                        required
+                                        autofocus
+                                        placeholder="example@messenger.com">
+                            </b-form-input>
+                        </b-form-group>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
@@ -64,10 +63,10 @@
                                 </a>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    </b-form>
+                </b-card>
+            </b-card-group>
+        </b-col> 
+    </b-row>
+</b-container>
 @endsection
